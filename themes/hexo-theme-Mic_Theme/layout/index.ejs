@@ -1,0 +1,127 @@
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in overlay">
+        <!-- Intro 头部显示 s -->
+        <%- partial('_partial/intro' , {}, {cache: true}) %>
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <%- partial('_partial/headerlogo'  , {}, {cache: true}) %>
+        <!-- Header 头部logo end -->
+        <!-- Nav 导航条 start -->
+        <%- partial('_partial/nav' , {}, {cache: true} ) %>
+        <!-- Nav 导航条 end -->
+        <!-- Main 主要部分 start -->
+        <% if( (page.current === 1) && (is_home()) ) { %>
+        <!-- Main-first -->
+            <%- partial('_partial/mainfirst' , {}, {cache: true} ) %>
+
+        <% } %>
+        <!-- 文章列表   s -->
+        <div id="main" style="background-color: transparent; padding:0;">
+        <section class="link_container" style="margin-top: 0; background-color: transparent; ">
+            <div class="link_row">
+                <!-- 文章sample  s-->
+
+                <% page.posts.each(function (post) { %>
+                <div class="6u 12u(narrower)">
+                    <section class="link_box special">
+                       <a href="<%- url_for(post.path) %>">
+                        <div class="page_title" style="background-image: url(<%= post.thumbnail %>);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
+                            <!--标题-->
+                            <h2 class="page_title_text"> <%= post.title %> </h2>
+                            <!--段落-->
+                        </div>
+                        </a>
+                        <div class="home-post-info">
+                            <!-- Author Avatar -->
+                            <div class="home-post-info-author-avatar">
+                                <h6><span class="home-post-info-data"><%- date(post.date, "YYYY-MM-DD") %></span></h6>
+                                <div class="home-post-info-Category">
+                                    <!-- Category -->
+                                    <span>
+                            <h6>
+                            <a class="post_category-link" href="http://localhost:4000/categories/Algorithm/">
+                                <%- list_categories(post.categories, {
+                                show_count: false,
+                                class: 'post_category',
+                                style: 'none'
+                            }) %></a>
+                            </h6>
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- 文章sample  e-->
+            <% }) %>
+            </div>
+        </section>
+        </div>
+        <!-- 文章列表   end -->
+        <!-- Main 主要部分 end -->
+        <!-- footer  页码 start-->
+        <%- partial('_partial/footer') %>
+
+        <!-- footer  页码 end-->
+        <!-- Copyright 版权 start -->
+        <%- partial('_partial/copyright' , {}, {cache: true}) %>
+        <!-- Copyright 版权 end -->
+    </div>
+    <!-- Wrapper 外包 e-->
+    <!-- Scripts -->
+
+    <!-- Sakura Animation -->
+    <div class="sakura-container" id="sakura"></div>
+    <style>
+        .sakura-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .sakura {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #ffb7c5 0%, #ff8fa3 50%, #ff7096 100%);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.6;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% {
+                transform: translateY(105vh) rotate(360deg) translateX(-10px);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        function createSakura() {
+            const container = document.getElementById('sakura');
+            if (!container) return;
+            for (let i = 0; i < 15; i++) {
+                const s = document.createElement('div');
+                s.className = 'sakura';
+                s.style.left = Math.random() * 100 + '%';
+                const size = 6 + Math.random() * 10;
+                s.style.width = size + 'px';
+                s.style.height = size + 'px';
+                const duration = 10 + Math.random() * 10;
+                s.style.animation = 'fall ' + duration + 's linear infinite';
+                s.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(s);
+            }
+        }
+        createSakura();
+    </script>
+</body>
