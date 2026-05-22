@@ -159,7 +159,7 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>我们这次要使用之前所学的知识做个简单的小游戏，要实现的功能有**1.地图制作 2.随机生成物品 3.角色基础功能 4.开始结束判定 5.碰撞检测动画等</p>
+                <p>我们这次要使用之前所学的知识做个简单的小游戏，要实现的功能有<strong>1.地图制作 2.随机生成物品 3.角色基础功能 4.开始结束判定 5.碰撞检测动画等</strong></p>
 <h2 id="1-地图制作"><a href="#1-地图制作" class="headerlink" title="1.地图制作"></a>1.地图制作</h2><p>首先我们新建个2d场景，添加个tilemap节点，然后在右侧属性栏新建tileset，随后拖入一张图块集<br>   <img src="/images/blog/jingsu_1.jpg"></p>
 <p>完成后，我们需要在tileset内，新建几个地形以用于我们不同地形的绘制，我们就简单绘制三个：land&#x2F;grass&#x2F;sea，点击tileset中的地形绘制，选择land&#x2F;grass&#x2F;sea开始绘制，值得一提的是我们要将terrain sets中的mode改为match corners<br>   <img src="/images/blog/jingsu_2.jpg"><br>   <img src="/images/blog/jingsu_3.jpg"><br>   <img src="/images/blog/jingsu_4.jpg"><br>   <img src="/images/blog/jingsu_5.jpg"><br>   <img src="/images/blog/jingsu_6.jpg"></p>
 <p>我们可以选择tilemap中地形画grass与sea地形<br>   <img src="/images/blog/jingsu_7.jpg"></p>
@@ -167,7 +167,7 @@
 <p>画完land，再删除部分grass，就可以得到小路<br>   <img src="/images/blog/jingsu_10.jpg"></p>
 <h2 id="2-随机生成物品"><a href="#2-随机生成物品" class="headerlink" title="2.随机生成物品"></a>2.随机生成物品</h2><p>我希望在这个池塘内可以生成石头，但他们的位置随机，如何通过代码实现呢，首先引入三张石头图片，然后我们新建三个场景，通过sprite将石头精灵化。<br>   <img src="/images/blog/jingsu_11.jpg"></p>
 <p>新建个tilemap用来放置石头，还是新建tileset放置图片，再建个terrains，这里我们仅需要一个区域显示就可以，因此画terrain就随便选个色块即可，画个新地形在池塘范围内，做好这些，接下来就可以写代码来控制了。首先在我们地图这个父节点新建脚本。<br>   <img src="/images/blog/jingsu_12.jpg"><br>   <img src="/images/blog/jingsu_13.jpg"></p>
-<p>首先需要思考**①获取随机石头 ②将石头放置于mask地图上 ③随机位置 ④隐藏mask</p>
+<p>首先需要思考<strong>①获取随机石头 ②将石头放置于mask地图上 ③随机位置 ④隐藏mask</strong></p>
 <h3 id="①获取随机石头"><a href="#①获取随机石头" class="headerlink" title="①获取随机石头"></a>①获取随机石头</h3><p>首先我们需要建个石头数组，再建个随机数来获取数组内石头并实例化即可。<br>   <img src="/images/blog/jingsu_14.jpg"></p>
 <h3 id="②将石头放置于mask地图上"><a href="#②将石头放置于mask地图上" class="headerlink" title="②将石头放置于mask地图上"></a>②将石头放置于mask地图上</h3><p>首先先使用for循环遍历mask所有使用的单元格以用于依次放入，然后通过add_child将石头放入节点下<br>   <img src="/images/blog/jingsu_15.jpg"></p>
 <h3 id="③随机位置"><a href="#③随机位置" class="headerlink" title="③随机位置"></a>③随机位置</h3><p>如何随机位置？首先石头大小肯定不能超过单元格大小，并且位置也不能超过单元格位置，通过下图可以更直观观察到tile_size - rock_size就是我们可以随机的区域，只要我们随机数在0-1之间，就可以实现在单元格内随机位置的功能<br>   <img src="/images/blog/jingsu_16.jpg"><br>   <img src="/images/blog/jingsu_17.jpg"><br>   <img src="/images/blog/jingsu_18.jpg"></p>
