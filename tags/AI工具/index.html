@@ -66,30 +66,25 @@
 	
 <meta name="generator" content="Hexo 7.3.0"></head>
     
-		
-<!-- Layouts -->
-
-    <!-- Tags Cloud -->
-    
-<link rel="stylesheet" href="/css/item.css" />
-<style >
-    .row a{
-        border-bottom: none;
-    }
-    .special{
-        padding: 0;
-        padding: 2rem;
-    }
-</style>
-<body class="is-loading">
+		<body class="is-loading">
     <!-- Wrapper 外包 s-->
-    <div id="wrapper" class="fade-in">
+    <div id="wrapper" class="fade-in overlay">
         <!-- Intro 头部显示 s -->
+                <div id="intro">
+            <h1>This is<br />
+                        zhLuan Blog </h1>
+            <p> 记录思考、灵感与日常 <br/> Done is better than perfect
+            </p>
+            <ul class="actions">
+                <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+            </ul>
+        </div>
         <!-- Intro 头部显示 e -->
         <!-- Header 头部logo start -->
         <header id="header">
     <a href="/" class="logo">zhluanblog</a>
 </header>
+        <!-- Header 头部logo end -->
         <!-- Nav 导航条 start -->
         <nav id="nav" class="special" >
             <ul class="menu links" >
@@ -158,30 +153,55 @@
                     
 			</ul>
 </nav>
-                <div id="main">
-            <!-- Main first s-->
-            <article id="me" class="panel">
-                <header style="color: #000000">
-                    <h1>zh Luan</h1>
-                    <p>Welcome to my Blog</p>
-                </header>
-                <a target="_blank" rel="noopener" href="https://blog.zhluanlog.xyz/about/" class="jumplink pic">
-                    <span class="arrow icon fa-chevron-right"><span></span></span>
-                    <img src="/images/me.jpg" alt="" />
-                </a>
-            </article>
-            <!-- Main first e-->
-        </div>
+        <!-- Nav 导航条 end -->
+        <!-- Main 主要部分 start -->
+        
+        <!-- 文章列表   s -->
+        <div id="main" style="background-color: transparent; padding:0;">
+        <section class="link_container" style="margin-top: 0; background-color: transparent; ">
+            <div class="link_row">
+                <!-- 文章sample  s-->
 
-        <section class="special">
-                            <div class="row" style="border-bottom: none;">
-
-        <a href="/tags/AI%E5%B7%A5%E5%85%B7/" style="font-size: 16px;">AI工具</a> <a href="/tags/EXCEL%E5%AD%A6%E4%B9%A0/" style="font-size: 16.33px;">EXCEL学习</a> <a href="/tags/Godot%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">Godot学习</a> <a href="/tags/%E4%BA%A7%E5%93%81%E4%BD%93%E9%AA%8C/" style="font-size: 16.33px;">产品体验</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">工具学习</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92/" style="font-size: 17px;">游戏策划</a>
-
+                
+                <div class="6u 12u(narrower)">
+                    <section class="link_box special">
+                       <a href="/2026/05/24/AI%E7%9F%AD%E5%89%A7%E6%80%9D%E8%B7%AF/">
+                        <div class="page_title" style="background-image: url(https://blog.zhluanlog.xyz/images/simage/jiangli.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
+                            <!--标题-->
+                            <h2 class="page_title_text"> AI短剧思路 </h2>
+                            <!--段落-->
+                        </div>
+                        </a>
+                        <div class="home-post-info">
+                            <!-- Author Avatar -->
+                            <div class="home-post-info-author-avatar">
+                                <h6><span class="home-post-info-data">2026-05-24</span></h6>
+                                <div class="home-post-info-Category">
+                                    <!-- Category -->
+                                    <span>
+                            <h6>
+                            <a class="post_category-link" target="_blank" rel="noopener" href="http://localhost:4000/categories/Algorithm/">
+                                <a class="post_category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></a>
+                            </h6>
+                        </span>
+                                </div>
                             </div>
-                    
+                        </div>
+                    </section>
+                </div>
+                <!-- 文章sample  e-->
+            
+            </div>
         </section>
+        </div>
+        <!-- 文章列表   end -->
+        <!-- Main 主要部分 end -->
+        <!-- footer  页码 start-->
+        <footer style="text-align: center; padding-top: 2em;">
+  
+</footer>
 
+        <!-- footer  页码 end-->
         <!-- Copyright 版权 start -->
                 <div id="copyright">
             <ul>
@@ -192,9 +212,65 @@
                 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 			
         </div>
+        <!-- Copyright 版权 end -->
     </div>
-</body>
+    <!-- Wrapper 外包 e-->
+    <!-- Scripts -->
 
+    <!-- Sakura Animation -->
+    <div class="sakura-container" id="sakura"></div>
+    <style>
+        .sakura-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .sakura {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #ffb7c5 0%, #ff8fa3 50%, #ff7096 100%);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.6;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% {
+                transform: translateY(105vh) rotate(360deg) translateX(-10px);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        function createSakura() {
+            const container = document.getElementById('sakura');
+            if (!container) return;
+            for (let i = 0; i < 15; i++) {
+                const s = document.createElement('div');
+                s.className = 'sakura';
+                s.style.left = Math.random() * 100 + '%';
+                const size = 6 + Math.random() * 10;
+                s.style.width = size + 'px';
+                s.style.height = size + 'px';
+                const duration = 10 + Math.random() * 10;
+                s.style.animation = 'fall ' + duration + 's linear infinite';
+                s.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(s);
+            }
+        }
+        createSakura();
+    </script>
+</body>
 
  	
 
